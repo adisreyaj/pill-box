@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:48:05 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 8:38:25 pm
+ * Last Modified: Tuesday, 9th June 2020 9:27:32 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -24,11 +24,6 @@ const Home = () => {
       <HomeHeader />
       <View style={styles.body}>
         <Upcoming />
-      </View>
-      <View
-        style={{ position: 'absolute', width: '100%', bottom: 0, zIndex: 5 }}
-      >
-        <BottomNavbar />
       </View>
     </View>
   );

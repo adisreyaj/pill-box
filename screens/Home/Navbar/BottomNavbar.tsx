@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 7:59:03 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 8:21:53 pm
+ * Last Modified: Tuesday, 9th June 2020 9:17:25 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -39,7 +39,7 @@ const BottomNavbar = () => {
         }}
       >
         <Feather name="home" size={24} color="black" />
-        <Feather name="activity" size={24} color="black" />
+        <Feather name="box" size={24} color="black" />
         <View></View>
         <Feather name="pie-chart" size={24} color="black" />
         <Feather name="settings" size={24} color="black" />

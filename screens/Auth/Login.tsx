@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:48:25 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 8th June 2020 9:04:42 pm
+ * Last Modified: Tuesday, 9th June 2020 9:26:55 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -19,7 +19,7 @@ import { SCREENS } from '../../config/screens';
 
 const Login = () => {
   const navigation = useNavigation();
-  const navigateToHome = () => navigation.navigate(SCREENS.home);
+  const navigateToHome = () => navigation.navigate(SCREENS.main);
   return (
     <View
       style={{
