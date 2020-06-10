@@ -4,19 +4,22 @@
  * File Created: Tuesday, 9th June 2020 7:59:03 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 9:17:25 pm
+ * Last Modified: Wednesday, 10th June 2020 10:17:58 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, TouchableOpacity } from 'react-native';
 import { Feather } from '@expo/vector-icons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+
 import { COLORS } from '../../../config/colors';
 import { DeviceDimensions } from '../../../config/dimension';
+import { SCREENS } from '../../../config/screens';
 
-const BottomNavbar = () => {
+const BottomNavbar = ({ navigation }: { navigation: any }) => {
+  const navigateTo = (screen: SCREENS) => navigation.navigate(screen);
   return (
     <View
       style={{
@@ -38,11 +41,19 @@ const BottomNavbar = () => {
           justifyContent: 'space-between',
         }}
       >
-        <Feather name="home" size={24} color="black" />
-        <Feather name="box" size={24} color="black" />
+        <TouchableOpacity onPress={() => navigateTo(SCREENS.home)}>
+          <Feather name="home" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateTo(SCREENS.inventory)}>
+          <Feather name="box" size={24} color="black" />
+        </TouchableOpacity>
         <View></View>
-        <Feather name="pie-chart" size={24} color="black" />
-        <Feather name="settings" size={24} color="black" />
+        <TouchableOpacity onPress={() => navigateTo(SCREENS.home)}>
+          <Feather name="pie-chart" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateTo(SCREENS.home)}>
+          <Feather name="settings" size={24} color="black" />
+        </TouchableOpacity>
       </View>
 
       <View

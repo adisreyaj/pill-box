@@ -4,13 +4,13 @@
  * File Created: Tuesday, 9th June 2020 8:35:13 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 9:07:42 pm
+ * Last Modified: Wednesday, 10th June 2020 10:53:20 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Typography from '../../../../components/Typography';
 import { COLORS } from '../../../../config/colors';

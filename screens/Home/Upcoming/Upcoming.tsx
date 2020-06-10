@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 8:31:33 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 9:11:14 pm
+ * Last Modified: Wednesday, 10th June 2020 9:57:03 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,7 +14,7 @@ import { View } from 'react-native';
 import UpcomingList from './UpcomingList/UpcomingList';
 import UpcomingHeader from './UpcomingHeader';
 
-const Upcoming = () => {
+const UpcomingSection = () => {
   return (
     <View>
       <View>
@@ -28,4 +28,4 @@ const Upcoming = () => {
   );
 };
 
-export default Upcoming;
+export default UpcomingSection;

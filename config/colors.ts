@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:39:57 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 8:59:01 pm
+ * Last Modified: Wednesday, 10th June 2020 10:43:32 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -18,4 +18,8 @@ export const COLORS = {
 
   textLight: '#9b9eab',
   textDark: '#444',
+
+  statusGreen: '#63c97c',
+  statusRed: '#eb6060',
+  statusAmber: '#e39d34',
 };
