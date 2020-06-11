@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 7:59:03 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Wednesday, 10th June 2020 10:17:58 pm
+ * Last Modified: Thursday, 11th June 2020 10:29:21 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -58,20 +58,6 @@ const BottomNavbar = ({ navigation }: { navigation: any }) => {
 
       <View
         style={{
-          width: 90,
-          height: 90,
-          borderRadius: 50,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: COLORS.background,
-          position: 'absolute',
-          zIndex: 5,
-          bottom: 40,
-          right: DeviceDimensions.width / 2 - 45,
-        }}
-      ></View>
-      <View
-        style={{
           backgroundColor: COLORS.accent,
           width: 70,
           height: 70,
@@ -80,9 +66,10 @@ const BottomNavbar = ({ navigation }: { navigation: any }) => {
           alignItems: 'center',
           position: 'absolute',
           zIndex: 6,
-          bottom: 50,
+          bottom: 20,
+          borderWidth: 12,
+          borderColor: '#fff',
           right: DeviceDimensions.width / 2 - 35,
-          elevation: 2,
         }}
       >
         <TouchableOpacity>

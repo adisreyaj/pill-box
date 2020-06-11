@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 8:39:00 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 9:01:08 pm
+ * Last Modified: Wednesday, 10th June 2020 11:11:39 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -24,7 +24,7 @@ const Typography = ({
   extraStyles,
 }: {
   type?: TypographyTypes;
-  children: string;
+  children: any;
   extraStyles?: object;
 }) => {
   return (
