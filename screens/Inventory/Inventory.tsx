@@ -4,16 +4,15 @@
  * File Created: Tuesday, 9th June 2020 9:19:45 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 11th June 2020 10:32:00 pm
+ * Last Modified: Friday, 12th June 2020 8:32:21 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 import React from 'react';
-import { View, Text, FlatList, TextInput, StatusBar } from 'react-native';
+import { View, FlatList, TextInput, StatusBar } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import InventoryItem from './InventoryItem';
-import Typography, { TypographyTypes } from '../../components/Typography';
 import { inventoryMockResponse } from '../../assets/data/mock';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../../config/colors';
@@ -82,7 +81,11 @@ const Inventory = () => {
           data={inventoryMockResponse.results}
           numColumns={2}
           renderItem={({ item, index }) => (
-            <InventoryItem key={index} index={index} {...item} />
+            <InventoryItem
+              key={item.name.toLowerCase()}
+              index={index}
+              {...item}
+            />
           )}
         />
       </View>

@@ -4,15 +4,14 @@
  * File Created: Thursday, 11th June 2020 8:24:17 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 11th June 2020 10:30:22 pm
+ * Last Modified: Friday, 12th June 2020 8:51:01 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import { View, StyleSheet } from 'react-native';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { COLORS } from '../config/colors';
 const MedicineTimes = ({
   timing = [false, false, false],

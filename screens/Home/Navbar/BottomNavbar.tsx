@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 7:59:03 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Thursday, 11th June 2020 10:29:21 pm
+ * Last Modified: Friday, 12th June 2020 8:30:39 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -59,8 +59,8 @@ const BottomNavbar = ({ navigation }: { navigation: any }) => {
       <View
         style={{
           backgroundColor: COLORS.accent,
-          width: 70,
-          height: 70,
+          width: 80,
+          height: 80,
           borderRadius: 50,
           justifyContent: 'center',
           alignItems: 'center',
@@ -72,7 +72,7 @@ const BottomNavbar = ({ navigation }: { navigation: any }) => {
           right: DeviceDimensions.width / 2 - 35,
         }}
       >
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigateTo(SCREENS.addInventory)}>
           <Feather name="plus" size={32} color="#fff" />
         </TouchableOpacity>
       </View>

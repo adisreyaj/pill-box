@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:48:25 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Tuesday, 9th June 2020 9:26:55 pm
+ * Last Modified: Friday, 12th June 2020 8:11:32 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -14,7 +14,7 @@ import { View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from '@react-navigation/native';
 import { COLORS } from '../../config/colors';
-import PrimaryButton from '../../components/Buttons';
+import { PrimaryButton } from '../../components/Buttons';
 import { SCREENS } from '../../config/screens';
 
 const Login = () => {
@@ -42,7 +42,7 @@ const Login = () => {
         }}
       />
 
-      <PrimaryButton onClick={() => navigateToHome()} />
+      <PrimaryButton onClick={() => navigateToHome()}>Go To App</PrimaryButton>
     </View>
   );
 };
