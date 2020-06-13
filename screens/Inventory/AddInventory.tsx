@@ -4,7 +4,7 @@
  * File Created: Friday, 12th June 2020 6:28:04 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 9:25:44 pm
+ * Last Modified: Saturday, 13th June 2020 11:25:14 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -26,6 +26,7 @@ import { COLORS } from '../../config/colors';
 import { useDispatch } from 'react-redux';
 import { addMedicine } from '../../store/actions/medicine.actions';
 import { SCREENS } from '../../config/screens';
+import { VALIDATORS } from '../../core/validators/validator';
 
 const addInventoryForm = [
   {
@@ -35,7 +36,7 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     placeholder: 'Eg: Dolo 650',
-    valid: false,
+    validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(10)],
   },
   {
     type: InputTypes.text,
@@ -44,6 +45,7 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     placeholder: 'Eg: Cipla',
+    validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(32)],
   },
   {
     type: InputTypes.textarea,
@@ -52,6 +54,7 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     placeholder: 'Eg: Pain Relief',
+    validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(250)],
   },
   {
     type: InputTypes.numeric,
@@ -60,6 +63,7 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     width: '30%',
+    validators: [VALIDATORS.integer, VALIDATORS.min(0), VALIDATORS.max(200)],
   },
   {
     type: InputTypes.numeric,
@@ -68,6 +72,7 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     width: '30%',
+    validators: [],
   },
 ];
 
@@ -114,7 +119,10 @@ const AddInventory = ({
     navigation.goBack();
   };
 
-  const formInputChangesHandler = (value: string, formControlName: string) => {
+  const formInputChangesHandler = (
+    value: string | number,
+    formControlName: string,
+  ) => {
     switch (formControlName) {
       default:
         dispatchFormState({
@@ -123,6 +131,26 @@ const AddInventory = ({
           formControlName,
         });
         break;
+    }
+  };
+
+  const checkIfFormItemValid = (formItem) => {
+    if (form) {
+      const selectedFormItemValue = form[formItem.name];
+      if (selectedFormItemValue)
+        return formItem.validators.every(
+          (validator) => validator(selectedFormItemValue).valid,
+        );
+    }
+  };
+
+  const getFormItemError = (formItem) => {
+    if (form) {
+      const selectedFormItemValue = form[formItem.name];
+      const errors = formItem.validators.map(
+        (validator) => validator(selectedFormItemValue).error,
+      );
+      return errors.length > 0 ? errors.filter(Boolean)[0] : '';
     }
   };
 
@@ -138,8 +166,13 @@ const AddInventory = ({
           <FormField
             {...item}
             key={i}
+            valid={checkIfFormItemValid(item)}
+            error={getFormItemError(item)}
             valueChanges={(value: string) =>
-              formInputChangesHandler(value, item.name)
+              formInputChangesHandler(
+                item.type === InputTypes.numeric ? +value : value,
+                item.name,
+              )
             }
           />
         ))}

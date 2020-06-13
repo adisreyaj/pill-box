@@ -4,7 +4,7 @@
  * File Created: Friday, 12th June 2020 6:33:56 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 12:07:40 pm
+ * Last Modified: Saturday, 13th June 2020 11:24:10 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -43,6 +43,8 @@ const FormField = ({
   width = '100%',
   error,
 }: FormFieldInterface) => {
+  console.log({ label, error });
+
   return (
     <View style={{ paddingVertical: 12, width, marginRight: 24 }}>
       {label && (
@@ -63,24 +65,17 @@ const FormField = ({
           style={{ width: '100%', minHeight: 50, fontSize: 18 }}
         />
         <View style={{ position: 'absolute', right: 16, top: 16 }}>
-          {error && (
+          {!valid && (
             <Ionicons name="ios-warning" size={20} color={COLORS.statusRed} />
-          )}
-          {valid && !error && (
-            <Ionicons
-              name="ios-checkmark-circle"
-              size={20}
-              color={COLORS.statusGreen}
-            />
           )}
         </View>
       </View>
       <View style={{ marginTop: 6 }}>
-        {error && (
+        {error ? (
           <Typography extraStyles={{ color: COLORS.statusRed, fontSize: 14 }}>
-            Please enter a valid name
+            {error}
           </Typography>
-        )}
+        ) : null}
         {hint && (
           <Typography extraStyles={{ color: COLORS.statusRed, fontSize: 14 }}>
             Please enter a valid name
