@@ -4,7 +4,7 @@
  * File Created: Friday, 12th June 2020 6:33:56 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Friday, 12th June 2020 8:24:55 pm
+ * Last Modified: Saturday, 13th June 2020 12:07:40 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -23,6 +23,7 @@ export enum InputTypes {
 }
 
 export interface FormFieldInterface {
+  valueChanges?: Function;
   type?: InputTypes;
   label?: string;
   placeholder?: string;
@@ -33,6 +34,7 @@ export interface FormFieldInterface {
 }
 
 const FormField = ({
+  valueChanges = () => {},
   type = InputTypes.text,
   label,
   placeholder,
@@ -56,6 +58,7 @@ const FormField = ({
           placeholderTextColor="#999"
           keyboardType={type === InputTypes.numeric ? 'numeric' : 'default'}
           multiline={type === InputTypes.textarea}
+          onChangeText={(value) => valueChanges(value)}
           numberOfLines={type === InputTypes.textarea ? 5 : 1}
           style={{ width: '100%', minHeight: 50, fontSize: 18 }}
         />

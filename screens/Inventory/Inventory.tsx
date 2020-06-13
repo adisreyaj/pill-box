@@ -4,20 +4,23 @@
  * File Created: Tuesday, 9th June 2020 9:19:45 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Friday, 12th June 2020 8:32:21 pm
+ * Last Modified: Saturday, 13th June 2020 9:24:52 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 import React from 'react';
-import { View, FlatList, TextInput, StatusBar } from 'react-native';
+import { View, FlatList, TextInput, StatusBar, ScrollView } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import InventoryItem from './InventoryItem';
-import { inventoryMockResponse } from '../../assets/data/mock';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../../config/colors';
+import { useSelector } from 'react-redux';
 
 const Inventory = () => {
+  const medicines = useSelector((state: any) => state.medicine);
+  console.log(medicines);
+
   return (
     <View>
       <StatusBar
@@ -36,59 +39,61 @@ const Inventory = () => {
           height: 220,
         }}
       />
-      <View style={{ marginTop: 64, paddingHorizontal: 24 }}>
-        <View style={{ marginBottom: 24 }}>
-          <View
-            style={{
-              marginTop: 12,
-              backgroundColor: '#fff',
-              paddingHorizontal: 16,
-              borderRadius: 4,
-              paddingLeft: 50,
-            }}
-          >
+      <ScrollView style={{ marginTop: 42 }}>
+        <View style={{ paddingHorizontal: 24 }}>
+          <View style={{ marginBottom: 24 }}>
             <View
               style={{
-                position: 'absolute',
-                left: 16,
-                bottom: 0,
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
+                marginTop: 12,
+                backgroundColor: '#fff',
+                paddingHorizontal: 16,
+                borderRadius: 4,
+                paddingLeft: 50,
               }}
             >
-              <Feather name="search" size={24} color="black" />
+              <View
+                style={{
+                  position: 'absolute',
+                  left: 16,
+                  bottom: 0,
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <Feather name="search" size={24} color="black" />
+              </View>
+              <View
+                style={{
+                  position: 'absolute',
+                  right: 16,
+                  bottom: 0,
+                  height: '100%',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
+                <Feather name="filter" size={24} color="black" />
+              </View>
+              <TextInput
+                placeholder="Search Medicine"
+                style={{ paddingVertical: 16, fontSize: 16 }}
+              ></TextInput>
             </View>
-            <View
-              style={{
-                position: 'absolute',
-                right: 16,
-                bottom: 0,
-                height: '100%',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-            >
-              <Feather name="filter" size={24} color="black" />
-            </View>
-            <TextInput
-              placeholder="Search Medicine"
-              style={{ paddingVertical: 16, fontSize: 16 }}
-            ></TextInput>
           </View>
+          <FlatList
+            data={medicines}
+            numColumns={2}
+            renderItem={({ item, index }) => (
+              <InventoryItem
+                key={item.name.toLowerCase()}
+                index={index}
+                {...item}
+              />
+            )}
+          />
         </View>
-        <FlatList
-          data={inventoryMockResponse.results}
-          numColumns={2}
-          renderItem={({ item, index }) => (
-            <InventoryItem
-              key={item.name.toLowerCase()}
-              index={index}
-              {...item}
-            />
-          )}
-        />
-      </View>
+      </ScrollView>
     </View>
   );
 };
