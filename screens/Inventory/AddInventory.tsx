@@ -4,26 +4,29 @@
  * File Created: Friday, 12th June 2020 6:28:04 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Sunday, 14th June 2020 4:00:20 pm
+ * Last Modified: Sunday, 14th June 2020 4:48:14 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React, { useState, useReducer, useRef } from 'react';
+import React, { useState, useReducer } from 'react';
 import {
   View,
-  Text,
+  KeyboardAvoidingView,
   SafeAreaView,
   StatusBar,
   TouchableOpacity,
+  ScrollView,
+  Platform,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { StackNavigationProp } from '@react-navigation/stack';
+
 import Typography, { TypographyTypes } from '../../components/Typography';
 import FormField, { InputTypes } from '../../components/Inputs/FormField';
 import { PrimaryButton, LinkButton } from '../../components/Buttons';
-import { StackNavigationProp } from '@react-navigation/stack';
 import RadioButton from '../../components/Inputs/RadioButton';
 import { COLORS } from '../../config/colors';
-import { useDispatch } from 'react-redux';
 import { addMedicine } from '../../store/actions/medicine.actions';
 import { SCREENS } from '../../config/screens';
 import { VALIDATORS } from '../../core/validators/validator';
@@ -181,7 +184,7 @@ const AddInventory = ({
     dispatch(addMedicine(form)) && navigation.navigate(SCREENS.inventory);
 
   return (
-    <SafeAreaView style={{ padding: 24, marginTop: 32 }}>
+    <ScrollView style={{ padding: 24, marginTop: 32 }}>
       <StatusBar barStyle="dark-content" />
       <Typography type={TypographyTypes.heading}>Add Medicine</Typography>
       <View style={{ flexDirection: 'row', flexWrap: 'wrap' }}>
@@ -235,7 +238,7 @@ const AddInventory = ({
         <PrimaryButton onClick={submitForm}>Save</PrimaryButton>
         <LinkButton onClick={navigateToInventoryScreen}>Cancel</LinkButton>
       </View>
-    </SafeAreaView>
+    </ScrollView>
   );
 };
 
