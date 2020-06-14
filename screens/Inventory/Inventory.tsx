@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 9:19:45 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 9:24:52 pm
+ * Last Modified: Sunday, 14th June 2020 11:39:23 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -19,7 +19,6 @@ import { useSelector } from 'react-redux';
 
 const Inventory = () => {
   const medicines = useSelector((state: any) => state.medicine);
-  console.log(medicines);
 
   return (
     <View>

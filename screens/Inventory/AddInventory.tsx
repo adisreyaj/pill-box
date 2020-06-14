@@ -4,12 +4,12 @@
  * File Created: Friday, 12th June 2020 6:28:04 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 11:25:14 pm
+ * Last Modified: Sunday, 14th June 2020 4:00:20 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useRef } from 'react';
 import {
   View,
   Text,
@@ -27,14 +27,16 @@ import { useDispatch } from 'react-redux';
 import { addMedicine } from '../../store/actions/medicine.actions';
 import { SCREENS } from '../../config/screens';
 import { VALIDATORS } from '../../core/validators/validator';
+import { FormFieldItem } from '../../interfaces/form-field.interface';
 
-const addInventoryForm = [
+const addInventoryForm: FormFieldItem[] = [
   {
     type: InputTypes.text,
     name: 'name',
     label: 'Name',
     error: undefined,
     hint: undefined,
+    required: true,
     placeholder: 'Eg: Dolo 650',
     validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(10)],
   },
@@ -44,6 +46,7 @@ const addInventoryForm = [
     label: 'Brand',
     error: undefined,
     hint: undefined,
+    required: true,
     placeholder: 'Eg: Cipla',
     validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(32)],
   },
@@ -53,6 +56,7 @@ const addInventoryForm = [
     label: 'Description',
     error: undefined,
     hint: undefined,
+    required: false,
     placeholder: 'Eg: Pain Relief',
     validators: [VALIDATORS.minLength(3), VALIDATORS.maxLength(250)],
   },
@@ -63,15 +67,17 @@ const addInventoryForm = [
     error: undefined,
     hint: undefined,
     width: '30%',
+    required: false,
     validators: [VALIDATORS.integer, VALIDATORS.min(0), VALIDATORS.max(200)],
   },
   {
-    type: InputTypes.numeric,
+    type: InputTypes.text,
     label: 'Dosage',
     name: 'dosage',
     error: undefined,
     hint: undefined,
     width: '30%',
+    required: false,
     validators: [],
   },
 ];
@@ -97,8 +103,21 @@ const AddInventory = ({
     { name: 'Noon', selected: false },
     { name: 'Night', selected: false },
   ]);
+
   const [form, dispatchFormState] = useReducer(formReducer, {});
   const dispatch = useDispatch();
+  let formFields: any = {};
+
+  const setInputRef = (e: any, name: string) => {
+    Object.assign(formFields, { [name]: e });
+  };
+
+  const onSubmitFormField = (name: string) => {
+    const fields = Object.keys(formFields);
+    const currentFieldIndex = fields.findIndex((item) => item === name);
+    const nextFormItem = fields[currentFieldIndex + 1];
+    if (nextFormItem) formFields[nextFormItem].focus();
+  };
 
   const updateTimings = (name: string) => {
     setTimings((prev: { name: string; selected: boolean }[]) => {
@@ -134,22 +153,26 @@ const AddInventory = ({
     }
   };
 
-  const checkIfFormItemValid = (formItem) => {
+  const checkIfFormItemValid = (formItem: FormFieldItem) => {
     if (form) {
       const selectedFormItemValue = form[formItem.name];
       if (selectedFormItemValue)
-        return formItem.validators.every(
-          (validator) => validator(selectedFormItemValue).valid,
-        );
+        if (formItem.validators && formItem.validators.length > 0)
+          return formItem.validators.every(
+            (validator) => validator(selectedFormItemValue).valid,
+          );
     }
   };
 
-  const getFormItemError = (formItem) => {
+  const getFormItemError = (formItem: FormFieldItem) => {
     if (form) {
       const selectedFormItemValue = form[formItem.name];
-      const errors = formItem.validators.map(
-        (validator) => validator(selectedFormItemValue).error,
-      );
+      let errors = [];
+      if (formItem.validators && formItem.validators.length > 0) {
+        errors = formItem.validators.map(
+          (validator: Function) => validator(selectedFormItemValue).error,
+        );
+      }
       return errors.length > 0 ? errors.filter(Boolean)[0] : '';
     }
   };
@@ -166,7 +189,11 @@ const AddInventory = ({
           <FormField
             {...item}
             key={i}
+            index={i}
+            blurOnSubmit={i === addInventoryForm.length - 1}
+            setRef={setInputRef}
             valid={checkIfFormItemValid(item)}
+            submit={onSubmitFormField}
             error={getFormItemError(item)}
             valueChanges={(value: string) =>
               formInputChangesHandler(

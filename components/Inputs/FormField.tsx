@@ -4,7 +4,7 @@
  * File Created: Friday, 12th June 2020 6:33:56 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 11:24:10 pm
+ * Last Modified: Sunday, 14th June 2020 11:54:37 am
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -24,27 +24,35 @@ export enum InputTypes {
 
 export interface FormFieldInterface {
   valueChanges?: Function;
+  setRef?: Function;
+  submit?: Function;
+  index?: number;
+  name?: string;
   type?: InputTypes;
   label?: string;
   placeholder?: string;
   width?: number | string;
   hint?: string;
   error?: string;
+  blurOnSubmit?: boolean;
   valid?: boolean;
 }
 
 const FormField = ({
   valueChanges = () => {},
+  setRef = () => {},
+  submit = () => {},
+  index,
   type = InputTypes.text,
   label,
+  name,
   placeholder,
   hint,
   valid,
   width = '100%',
   error,
+  blurOnSubmit = false,
 }: FormFieldInterface) => {
-  console.log({ label, error });
-
   return (
     <View style={{ paddingVertical: 12, width, marginRight: 24 }}>
       {label && (
@@ -59,6 +67,10 @@ const FormField = ({
           placeholder={placeholder}
           placeholderTextColor="#999"
           keyboardType={type === InputTypes.numeric ? 'numeric' : 'default'}
+          returnKeyType="next"
+          onSubmitEditing={() => submit(name)}
+          blurOnSubmit={blurOnSubmit}
+          ref={(e) => setRef(e, name)}
           multiline={type === InputTypes.textarea}
           onChangeText={(value) => valueChanges(value)}
           numberOfLines={type === InputTypes.textarea ? 5 : 1}
