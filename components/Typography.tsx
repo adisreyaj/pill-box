@@ -4,7 +4,7 @@
  * File Created: Tuesday, 9th June 2020 8:39:00 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Friday, 12th June 2020 9:01:54 pm
+ * Last Modified: Monday, 15th June 2020 10:07:11 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -41,7 +41,7 @@ const Typography = ({
 
 const baseStyles = StyleSheet.create({
   heading: {
-    fontSize: 24,
+    fontSize: 28,
     fontWeight: '700',
     fontFamily: 'Inter-Bold',
   },

@@ -4,21 +4,13 @@
  * File Created: Friday, 12th June 2020 6:28:04 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Sunday, 14th June 2020 4:48:14 pm
+ * Last Modified: Monday, 15th June 2020 9:39:08 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
 
 import React, { useState, useReducer } from 'react';
-import {
-  View,
-  KeyboardAvoidingView,
-  SafeAreaView,
-  StatusBar,
-  TouchableOpacity,
-  ScrollView,
-  Platform,
-} from 'react-native';
+import { View, StatusBar, TouchableOpacity, ScrollView } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { StackNavigationProp } from '@react-navigation/stack';
 

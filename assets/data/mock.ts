@@ -4,10 +4,12 @@
  * File Created: Wednesday, 10th June 2020 11:05:57 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Saturday, 13th June 2020 9:13:57 pm
+ * Last Modified: Monday, 15th June 2020 10:04:32 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
+
+import { COLORS } from '../../config/colors';
 
 export const inventoryMockResponse = {
   results: [
@@ -55,3 +57,22 @@ export const inventoryMockResponse = {
     },
   ],
 };
+
+export const dispenserMockResponse = [
+  {
+    name: 'Dispnser 1',
+    morning: '09:00',
+    afternoon: '13:30',
+    night: '20:00',
+    color: COLORS.primary,
+    description: 'Pain Reflief Tablets',
+  },
+  {
+    name: 'Dispnser 2',
+    morning: '09:00',
+    afternoon: '13:30',
+    night: null,
+    color: COLORS.accent,
+    description: 'Pain Reflief Tablets',
+  },
+];
