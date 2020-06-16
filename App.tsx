@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:34:34 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 15th June 2020 9:39:06 pm
+ * Last Modified: Tuesday, 16th June 2020 7:55:55 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -24,6 +24,7 @@ import AddInventory from './screens/Inventory/AddInventory';
 import { createStore, combineReducers } from 'redux';
 import { medicineReducer } from './store/reducers/medicine.reducer';
 import DispenserItemForm from './screens/Settings/DispenserItemForm';
+import Profile from './screens/Profile/Profile';
 
 const Stack = createStackNavigator();
 const rootReducer = combineReducers({
@@ -50,6 +51,7 @@ const App = () => {
             name={SCREENS.dispenserForm}
             component={DispenserItemForm}
           />
+          <Stack.Screen name={SCREENS.profile} component={Profile} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

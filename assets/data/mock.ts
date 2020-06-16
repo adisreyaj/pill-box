@@ -4,7 +4,7 @@
  * File Created: Wednesday, 10th June 2020 11:05:57 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 15th June 2020 10:04:32 pm
+ * Last Modified: Tuesday, 16th June 2020 7:14:16 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -60,6 +60,7 @@ export const inventoryMockResponse = {
 
 export const dispenserMockResponse = [
   {
+    id: '1',
     name: 'Dispnser 1',
     morning: '09:00',
     afternoon: '13:30',
@@ -68,10 +69,11 @@ export const dispenserMockResponse = [
     description: 'Pain Reflief Tablets',
   },
   {
+    id: '2',
     name: 'Dispnser 2',
     morning: '09:00',
     afternoon: '13:30',
-    night: null,
+    night: undefined,
     color: COLORS.accent,
     description: 'Pain Reflief Tablets',
   },

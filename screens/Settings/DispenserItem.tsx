@@ -4,7 +4,7 @@
  * File Created: Monday, 15th June 2020 9:20:05 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 15th June 2020 10:06:48 pm
+ * Last Modified: Tuesday, 16th June 2020 7:13:41 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -20,6 +20,7 @@ import Typography, { TypographyTypes } from '../../components/Typography';
 import { SCREENS } from '../../config/screens';
 
 export interface DispenserItemProps {
+  id?: string;
   name: string;
   morning?: string;
   color?: string;

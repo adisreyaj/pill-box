@@ -4,7 +4,7 @@
  * File Created: Monday, 15th June 2020 9:11:55 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 15th June 2020 10:03:53 pm
+ * Last Modified: Tuesday, 16th June 2020 7:13:22 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -23,8 +23,9 @@ import Typography, { TypographyTypes } from '../../components/Typography';
 import DispenserItem from './DispenserItem';
 import { SCREENS } from '../../config/screens';
 import { dispenserMockResponse } from '../../assets/data/mock';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const Settings = ({ navigation }) => {
+const Settings = ({ navigation }: { navigation: StackNavigationProp<any> }) => {
   const openDispenserForm = () => navigation.navigate(SCREENS.dispenserForm);
 
   return (
@@ -35,6 +36,7 @@ const Settings = ({ navigation }) => {
         <View style={{ marginTop: 12 }}>
           <FlatList
             data={dispenserMockResponse}
+            keyExtractor={(item) => item.id}
             renderItem={({ item }) => <DispenserItem {...item} />}
           />
         </View>

@@ -4,7 +4,7 @@
  * File Created: Monday, 15th June 2020 9:32:41 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Monday, 15th June 2020 9:57:37 pm
+ * Last Modified: Tuesday, 16th June 2020 7:15:22 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -90,7 +90,6 @@ const DispenserItemForm = ({
             {...item}
             key={i}
             index={i}
-            s
             blurOnSubmit={i === dispenserForm.length - 1}
           />
         ))}

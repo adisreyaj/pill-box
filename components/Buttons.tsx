@@ -4,7 +4,7 @@
  * File Created: Monday, 8th June 2020 8:59:42 pm
  * Author: Adithya Sreyaj
  * -----
- * Last Modified: Friday, 12th June 2020 8:15:52 pm
+ * Last Modified: Tuesday, 16th June 2020 10:01:43 pm
  * Modified By: Adithya Sreyaj<adi.sreyaj@gmail.com>
  * -----
  */
@@ -45,9 +45,11 @@ const PrimaryButton = ({
 };
 
 const StrokedButton = ({
+  color,
   onClick,
   children,
 }: {
+  color?: string;
   onClick?: Function;
   children: any;
 }) => {
@@ -55,17 +57,18 @@ const StrokedButton = ({
     <TouchableOpacity
       activeOpacity={0.8}
       style={{
-        borderColor: COLORS.textLight,
+        borderColor: color ? color : COLORS.textLight,
         borderWidth: 2,
         paddingHorizontal: 38,
-        paddingVertical: 15,
+        paddingVertical: 12,
         borderRadius: 50,
+        alignItems: 'center',
       }}
       onPress={() => (onClick ? onClick() : null)}
     >
       <Typography
         type={TypographyTypes.subHeading}
-        color={COLORS.textDark}
+        color={color ? color : COLORS.textDark}
         extraStyles={{ fontSize: 18 }}
       >
         {children}
@@ -75,9 +78,11 @@ const StrokedButton = ({
 };
 
 const LinkButton = ({
+  color,
   onClick,
   children,
 }: {
+  color?: string;
   onClick?: Function;
   children: any;
 }) => {
@@ -93,7 +98,7 @@ const LinkButton = ({
     >
       <Typography
         type={TypographyTypes.subHeading}
-        color={COLORS.textDark}
+        color={color ? color : COLORS.textDark}
         extraStyles={{ fontSize: 18 }}
       >
         {children}
